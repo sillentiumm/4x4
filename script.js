@@ -10,10 +10,17 @@ const App = {
             countPlus: 0,
             countMinus: 0,
             k: 0,
-            l: 0,
+            rules: 0,
+            winner: 0,
         }
     },
     methods: {
+        rulesOn() {
+            this.rules = 1
+        },
+        rulesOff() {
+            this.rules = 0
+        },
         start() {
             for(i= 0; i < 100; i++) {
                 this.list.push(0)
@@ -25,6 +32,7 @@ const App = {
             this.start()
             this.countPlus = 0
             this.countMinus = 0
+            this.winner = 0
         },
         turn(idx) {
             if(this.player == 1) {
@@ -106,6 +114,7 @@ const App = {
             for(j = 0; j < arr.length; j++) {
                 if(arr[j] == 1) {
                     if(this.countPlus == 3) {
+                        this.winner = 1
                         console.log('plus')
                     }
                     else {
@@ -115,9 +124,10 @@ const App = {
                 }
                 else if(arr[j] == - 1) {
                     if(this.countMinus == 3) {
+                        this.winner = -1
                         console.log('minus')
                     }
-                    else {
+                    else {                
                         this.countPlus = 0
                         this.countMinus++
                     }

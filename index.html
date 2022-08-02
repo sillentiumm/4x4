@@ -12,13 +12,27 @@
     <div class="main" >
         <h2 class="title">Title</h2>
         <div class="game">
-            <div :class="{x : el == 1, o: el == -1}" class="random" v-for="(el, idx) in list" @click="turn(idx)"> </div>
+            <div :class="{x : el == 1, o: el == -1}" class="random" v-for="(el, idx) in list" @click="turn(idx)"></div>
+            <div v-if="winner == 1" class="winner winner1">player 1 win</div>
+            <div v-if="winner == -1" class="winner winner-1">player 2 win</div>
         </div>
         <div v-if="player == 1" class="player player1">Player 1</div>
         <div v-else class="player player2">Player 2</div>
         <div class="buttons">
             <button class="player btn" @click="reset" >reset</button>
-            <button class="player rules">rules</button>
+            <button class="player btnRules" @click="rulesOn" >rules</button>
+        </div>
+        <div v-if="rules == 1" class="rules">
+            <div class="rules-text">
+                <span class="rules-title">Правила игры “Коробки”:</span>
+                <span class="rules-bold">1.  Цель игры</span>
+                <span>Крановщики по очереди опускают груз на склад. Кто первый поставит свои 4 коробки в ряд, тот выиграл и следующую его смену отрабатывает проигравший. </span>
+                <span class="rules-bold">2. Механика игры</span>
+                <span>Коробки можно ставить либо на пол, либо на любую другую коробку. </span>
+                <span class="rules-bold">3. Варианты победы</span> 
+                <span>Ряд из 4 коробок считается выигрышными, если 4 коробки подряд касаются друг друга по горизонтали, вертикали или диагонали. </span>
+            </div>
+            <button class="btn rulesOff" @click="rulesOff" >X</button>
         </div>
     </div>
 
