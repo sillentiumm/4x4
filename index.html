@@ -10,7 +10,7 @@
 <body>
 
     <div class="main" >
-        <h2 class="title">Title</h2>
+        <h2 class="title">Boxes</h2>
         <div class="game">
             <div :class="{x : el == 1, o: el == -1}" class="random" v-for="(el, idx) in list" @click="turn(idx)"></div>
             <div v-if="winner == 1" class="winner winner1">player 1 win</div>

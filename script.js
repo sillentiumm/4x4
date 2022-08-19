@@ -114,8 +114,9 @@ const App = {
             for(j = 0; j < arr.length; j++) {
                 if(arr[j] == 1) {
                     if(this.countPlus == 3) {
-                        this.winner = 1
-                        console.log('plus')
+                        if(this.winner == 0) {
+                            this.winner = 1
+                        }
                     }
                     else {
                         this.countMinus = 0
@@ -124,8 +125,9 @@ const App = {
                 }
                 else if(arr[j] == - 1) {
                     if(this.countMinus == 3) {
-                        this.winner = -1
-                        console.log('minus')
+                        if(this.winner == 0) {
+                            this.winner = -1
+                        }   
                     }
                     else {                
                         this.countPlus = 0
@@ -139,7 +141,7 @@ const App = {
             }
             this.countPlus = 0
             this.countMinus = 0
-        }
+        },
     },
     beforeMount(){
         this.start()
